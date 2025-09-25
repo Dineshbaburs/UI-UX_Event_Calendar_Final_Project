@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Calendar</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container-fluid mt-4">
+  <div class="text-center mb-4">
+    <h1>📅 Event Calendar</h1>
+    <h5 id="liveClock" class="text-muted"></h5>
+    <h5 id="liveDate" class="fw-bold text-danger"></h5>
+    <button id="goToday" class="btn btn-outline-danger mt-2">Go to Today</button>
+  </div>
+
+  <div class="row">
+    <!-- Calendar Section -->
+    <div class="col-lg-8 calendar shadow p-3 bg-white rounded">
+      <div class="calendar-header">
+        <button id="prev" class="btn btn-outline-primary">&lt; Prev</button>
+        <h3 id="monthAndYear" class="fw-bold"></h3>
+        <button id="next" class="btn btn-outline-primary">Next &gt;</button>
+      </div>
+      <table class="table table-bordered text-center align-middle">
+        <thead class="table-primary">
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body">
+          <!-- Calendar cells will be generated here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Upcoming Events Sidebar -->
+    <div class="col-lg-4">
+      <div class="p-3 bg-light rounded shadow">
+        <h4 class="mb-3 text-center">📌 Upcoming Events</h4>
+        <ul id="eventList" class="list-group">
+          <!-- Events will be listed here -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Event Modal -->
+<div class="modal fade" id="eventModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form id="eventForm" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Add Event</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="eventDate">
+        <input type="hidden" id="editIndex">
+        <div class="mb-3">
+          <label for="eventTitle" class="form-label">Event Title</label>
+          <input type="text" id="eventTitle" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="eventTime" class="form-label">Time</label>
+          <input type="time" id="eventTime" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="eventCategory" class="form-label">Category</label>
+          <select id="eventCategory" class="form-select" required>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="eventDesc" class="form-label">Description</label>
+          <textarea id="eventDesc" class="form-control" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save Event</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+</body>
+</html>
